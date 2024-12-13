@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class daspro4 {
     static String[][] dataMhs = new String[100][2]; // [NIM, Nama]
-    static String[][] dataMatkul = new String[1000][4]; // [NIM, Kode MK, Nama MK, SKS] (menambah ukuran array)
+    static String[][] dataMatkul = new String[1000][4]; // [NIM, Kode MK, Nama MK, SKS] 
     static int jumlahMahasiswa = 0;
     static int jumlahMatkul = 0;
 
@@ -17,7 +17,7 @@ public class daspro4 {
             System.out.println("4. Keluar");
             System.out.print("Pilih menu: ");
             int pilihan = sc.nextInt();
-            sc.nextLine(); // Membersihkan buffer
+            sc.nextLine(); 
 
             switch (pilihan) {
                 case 1:
@@ -38,7 +38,6 @@ public class daspro4 {
         }
     }
 
-    // Fungsi untuk menambah data mahasiswa dan mata kuliah
     public static void tambahData(Scanner sc) {
         System.out.println("--- Tambah Data KRS ---");
         int totalSKS = 0;
@@ -60,8 +59,8 @@ public class daspro4 {
                 sc.nextLine();
 
                 if (sks >= 1 && sks <= 3) {
-                    dataMatkul[jumlahMatkul][0] = nim; // NIM mahasiswa
-                    dataMatkul[jumlahMatkul][3] = Integer.toString(sks); // Konversi int ke string untuk SKS
+                    dataMatkul[jumlahMatkul][0] = nim; 
+                    dataMatkul[jumlahMatkul][3] = Integer.toString(sks); 
                     totalSKS += sks;
                     jumlahMatkul++;
                 } else {
@@ -83,11 +82,10 @@ public class daspro4 {
         }
     }
 
-    // Fungsi untuk menampilkan data mahasiswa berdasarkan NIM
     public static void tampilkanDataByNIM(Scanner sc) {
         System.out.print("Masukkan NIM mahasiswa: ");
         String inputNIM = sc.nextLine();
-        boolean mahasiswaDitemukan = false; // Flag jika NIM ditemukan
+        boolean mahasiswaDitemukan = false; 
         int totalSKS = 0;
 
         System.out.println("Daftar KRS:");
@@ -96,27 +94,26 @@ public class daspro4 {
         System.out.println("-------------------------------------------------------------");
 
         for (int i = 0; i < jumlahMahasiswa; i++) {
-            if (dataMhs[i][0].equals(inputNIM)) { // Jika NIM cocok
+            if (dataMhs[i][0].equals(inputNIM)) { 
                 mahasiswaDitemukan = true;
                 String namaMhs = dataMhs[i][1];
 
-                // Tampilkan data mata kuliah untuk mahasiswa ini
                 for (int j = 0; j < jumlahMatkul; j++) {
                     if (dataMatkul[j][0].equals(inputNIM)) {
                         System.out.printf("%-10s %-15s %-10s %-30s %-5s\n",
-                                dataMatkul[j][0],  // NIM
-                                namaMhs,           // Nama Mahasiswa
-                                dataMatkul[j][1],  // Kode MK
-                                dataMatkul[j][2],  // Nama Mata Kuliah
-                                dataMatkul[j][3]   // SKS
+                                dataMatkul[j][0], 
+                                namaMhs,           
+                                dataMatkul[j][1],  
+                                dataMatkul[j][2],  
+                                dataMatkul[j][3]   
                         );
-                        totalSKS += Integer.parseInt(dataMatkul[j][3]); // Tambahkan SKS //mengonversi string yang mewakili angka menjadi tipe data integer
+                        totalSKS += Integer.parseInt(dataMatkul[j][3]); 
                     }
                 }
-                // Berikan spasi setelah menampilkan data mata kuliah untuk setiap mahasiswa
+            
                 System.out.println("-------------------------------------------------------------");
                 System.out.println("Total SKS: " + totalSKS);
-                System.out.println(); // Spasi antar mahasiswa
+                System.out.println(); 
             }
         }
 
@@ -124,7 +121,7 @@ public class daspro4 {
             System.out.println("Mahasiswa dengan NIM " + inputNIM + " tidak ditemukan.");
         }
     }
-    //Fungsi untuk menganalisis data mahasiswa yang mengambil sks kurang dari 20
+    
     public static void analisisData() {
         System.out.println("--- Analisis Data KRS ---"); 
         int count = 0; 
@@ -132,7 +129,7 @@ public class daspro4 {
             int totalSKS = 0; 
             for (int j = 0; j < jumlahMatkul; j++) { 
                 if (dataMatkul[j][0].equals(dataMhs[i][0])) { 
-                    totalSKS += Integer.parseInt(dataMatkul[j][3]); //mengonversi string yang mewakili angka menjadi tipe data integer
+                    totalSKS += Integer.parseInt(dataMatkul[j][3]); 
                 } 
             } 
             if (totalSKS < 20) { 
