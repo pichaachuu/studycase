@@ -96,7 +96,7 @@ public class studycase2 {
             }
             System.out.println("Total Harga Pesanan: " + "Rp " + totalHarga);
             System.out.println("-------------------------------------------------------------------");
-        }
-    }
+        }
+    }
 }
 
