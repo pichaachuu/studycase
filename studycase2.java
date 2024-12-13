@@ -23,7 +23,7 @@ public class studycase2 {
                     tambahPesanan(sc);
                     break;
                 case 2:
-                    tampilkanPesanan();
+                    tampilkanPesanan(sc);
                     break;
                 case 3:
                     System.out.println("Terima kasih! Sampai jumpa.");
@@ -78,4 +78,25 @@ public class studycase2 {
         }
 
     }
+    public static void tampilkanPesanan(Scanner sc) {
+        String[] namaMenu = {"Kopi Hitam", "Latte", "Teh Tarik","Mie Goreng"};
+        int[] hargaMenu = {15000, 22000, 12000, 18000};
+         System.out.println("===== DAFTAR PESANAN =====");
+         for (int i = 0; i < jumlahPelanggan; i++){
+            System.out.println("Nama Pelanggan: " + dataPelanggan[i][0]);
+            System.out.println("Nomor Meja: " + dataPelanggan[i][1]);
+            System.out.println("Detail Pesanan: ");
+            int totalHarga = 0;
+            for (int j = 0; j < namaMenu.length; j++) {
+                int harga = dataMENU[i][j]*hargaMenu[j]; 
+                if (dataMENU[i][j] > 0) {
+                System.out.println("- " + namaMenu[j] + " x " + dataMENU[i][j] + " = " + harga);
+                totalHarga += harga;
+                }
+            }
+            System.out.println("Total Harga Pesanan: " + "Rp " + totalHarga);
+            System.out.println("-------------------------------------------------------------------");
+        }
+    }
 }
+
